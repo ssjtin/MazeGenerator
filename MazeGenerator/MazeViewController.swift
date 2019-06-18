@@ -59,6 +59,9 @@ class MazeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let firebase = FirebaseService()
+        firebase.write()
+        
         view.backgroundColor = .white
         
         let rows = 10

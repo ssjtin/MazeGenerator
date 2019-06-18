@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8E3D8B9D22B8EFC60087BD99 /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3D8B9C22B8EFC60087BD99 /* RandomNumberGenerator.swift */; };
+		8E4D289822B919BE00165504 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4D289722B919BE00165504 /* GoogleService-Info.plist */; };
+		8E4D289A22B91BCD00165504 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D289922B91BCD00165504 /* FirebaseService.swift */; };
 		8E72C7A922B070A700CFA087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72C7A822B070A700CFA087 /* AppDelegate.swift */; };
 		8E72C7AB22B070A700CFA087 /* MazeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72C7AA22B070A700CFA087 /* MazeViewController.swift */; };
 		8E72C7B022B070A800CFA087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E72C7AF22B070A800CFA087 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 		8E72C7CB22B0CACD00CFA087 /* MazeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72C7CA22B0CACD00CFA087 /* MazeGrid.swift */; };
 		8E72C7CD22B1B10C00CFA087 /* MazeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72C7CC22B1B10C00CFA087 /* MazeCell.swift */; };
 		8E72C7CF22B1C4DF00CFA087 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72C7CE22B1C4DF00CFA087 /* UIView_Extension.swift */; };
+		92E4B8D35DD6B2B27F088473 /* Pods_MazeGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6FF4E64BA2C33E65773B69 /* Pods_MazeGeneratorTests.framework */; };
+		ACF5E5F42CC4041B6476671C /* Pods_MazeGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6296D529A4902F888DFF933 /* Pods_MazeGenerator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F6FF4E64BA2C33E65773B69 /* Pods_MazeGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MazeGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A151141EE80CC0818333C1B /* Pods-MazeGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MazeGenerator.debug.xcconfig"; path = "Target Support Files/Pods-MazeGenerator/Pods-MazeGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		3BC11A985A393C77537FC3E3 /* Pods-MazeGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MazeGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-MazeGeneratorTests/Pods-MazeGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E3D8B9C22B8EFC60087BD99 /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
+		8E4D289722B919BE00165504 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E4D289922B91BCD00165504 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		8E72C7A522B070A700CFA087 /* MazeGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E72C7A822B070A700CFA087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E72C7AA22B070A700CFA087 /* MazeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +53,9 @@
 		8E72C7CA22B0CACD00CFA087 /* MazeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGrid.swift; sourceTree = "<group>"; };
 		8E72C7CC22B1B10C00CFA087 /* MazeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCell.swift; sourceTree = "<group>"; };
 		8E72C7CE22B1C4DF00CFA087 /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
+		AAE7ACFCEF951355AEB0E4C7 /* Pods-MazeGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MazeGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-MazeGeneratorTests/Pods-MazeGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6296D529A4902F888DFF933 /* Pods_MazeGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MazeGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0FE1CFE6525C1CAD083555D /* Pods-MazeGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MazeGenerator.release.xcconfig"; path = "Target Support Files/Pods-MazeGenerator/Pods-MazeGenerator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF5E5F42CC4041B6476671C /* Pods_MazeGenerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E4B8D35DD6B2B27F088473 /* Pods_MazeGeneratorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +83,7 @@
 			children = (
 				8E3D8B9C22B8EFC60087BD99 /* RandomNumberGenerator.swift */,
 				8E72C7C822B0725600CFA087 /* MazeGenerator.swift */,
+				8E4D289922B91BCD00165504 /* FirebaseService.swift */,
 			);
 			path = "Helper Classes";
 			sourceTree = "<group>";
@@ -95,6 +110,8 @@
 				8E72C7A722B070A700CFA087 /* MazeGenerator */,
 				8E72C7BC22B070A800CFA087 /* MazeGeneratorTests */,
 				8E72C7A622B070A700CFA087 /* Products */,
+				DEDBF9E90AFF171D827344F7 /* Pods */,
+				C47AF5A7289B9564853DB15D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +135,7 @@
 				8E3D8B9F22B8FD090087BD99 /* Extensions */,
 				8E72C7AF22B070A800CFA087 /* Assets.xcassets */,
 				8E72C7B122B070A800CFA087 /* LaunchScreen.storyboard */,
+				8E4D289722B919BE00165504 /* GoogleService-Info.plist */,
 				8E72C7B422B070A800CFA087 /* Info.plist */,
 			);
 			path = MazeGenerator;
@@ -132,6 +150,26 @@
 			path = MazeGeneratorTests;
 			sourceTree = "<group>";
 		};
+		C47AF5A7289B9564853DB15D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6296D529A4902F888DFF933 /* Pods_MazeGenerator.framework */,
+				1F6FF4E64BA2C33E65773B69 /* Pods_MazeGeneratorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DEDBF9E90AFF171D827344F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A151141EE80CC0818333C1B /* Pods-MazeGenerator.debug.xcconfig */,
+				F0FE1CFE6525C1CAD083555D /* Pods-MazeGenerator.release.xcconfig */,
+				AAE7ACFCEF951355AEB0E4C7 /* Pods-MazeGeneratorTests.debug.xcconfig */,
+				3BC11A985A393C77537FC3E3 /* Pods-MazeGeneratorTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,9 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E72C7C222B070A800CFA087 /* Build configuration list for PBXNativeTarget "MazeGenerator" */;
 			buildPhases = (
+				9C1DE8BA97A19D9B2A4D9F88 /* [CP] Check Pods Manifest.lock */,
 				8E72C7A122B070A700CFA087 /* Sources */,
 				8E72C7A222B070A700CFA087 /* Frameworks */,
 				8E72C7A322B070A700CFA087 /* Resources */,
+				3A47562845318D16C2B87A35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,6 +196,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E72C7C522B070A800CFA087 /* Build configuration list for PBXNativeTarget "MazeGeneratorTests" */;
 			buildPhases = (
+				CB79D2E1A858FD85B0AC1A25 /* [CP] Check Pods Manifest.lock */,
 				8E72C7B522B070A800CFA087 /* Sources */,
 				8E72C7B622B070A800CFA087 /* Frameworks */,
 				8E72C7B722B070A800CFA087 /* Resources */,
@@ -214,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E72C7B322B070A800CFA087 /* LaunchScreen.storyboard in Resources */,
+				8E4D289822B919BE00165504 /* GoogleService-Info.plist in Resources */,
 				8E72C7B022B070A800CFA087 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +269,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A47562845318D16C2B87A35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MazeGenerator/Pods-MazeGenerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MazeGenerator/Pods-MazeGenerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MazeGenerator/Pods-MazeGenerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C1DE8BA97A19D9B2A4D9F88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MazeGenerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB79D2E1A858FD85B0AC1A25 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MazeGeneratorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8E72C7A122B070A700CFA087 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -234,6 +340,7 @@
 			files = (
 				8E72C7CB22B0CACD00CFA087 /* MazeGrid.swift in Sources */,
 				8E72C7AB22B070A700CFA087 /* MazeViewController.swift in Sources */,
+				8E4D289A22B91BCD00165504 /* FirebaseService.swift in Sources */,
 				8E72C7CF22B1C4DF00CFA087 /* UIView_Extension.swift in Sources */,
 				8E72C7A922B070A700CFA087 /* AppDelegate.swift in Sources */,
 				8E72C7C922B0725600CFA087 /* MazeGenerator.swift in Sources */,
@@ -390,6 +497,7 @@
 		};
 		8E72C7C322B070A800CFA087 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A151141EE80CC0818333C1B /* Pods-MazeGenerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -408,6 +516,7 @@
 		};
 		8E72C7C422B070A800CFA087 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0FE1CFE6525C1CAD083555D /* Pods-MazeGenerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -426,6 +535,7 @@
 		};
 		8E72C7C622B070A800CFA087 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAE7ACFCEF951355AEB0E4C7 /* Pods-MazeGeneratorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -447,6 +557,7 @@
 		};
 		8E72C7C722B070A800CFA087 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BC11A985A393C77537FC3E3 /* Pods-MazeGeneratorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
