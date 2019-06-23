@@ -10,6 +10,7 @@
 		8E3D8B9D22B8EFC60087BD99 /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3D8B9C22B8EFC60087BD99 /* RandomNumberGenerator.swift */; };
 		8E4D289822B919BE00165504 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4D289722B919BE00165504 /* GoogleService-Info.plist */; };
 		8E4D289A22B91BCD00165504 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D289922B91BCD00165504 /* FirebaseService.swift */; };
+		8E58205322B99CE10054B45A /* CreateNewMazeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E58205222B99CE10054B45A /* CreateNewMazeViewController.swift */; };
 		8E72C7A922B070A700CFA087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72C7A822B070A700CFA087 /* AppDelegate.swift */; };
 		8E72C7AB22B070A700CFA087 /* MazeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72C7AA22B070A700CFA087 /* MazeViewController.swift */; };
 		8E72C7B022B070A800CFA087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E72C7AF22B070A800CFA087 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		8E3D8B9C22B8EFC60087BD99 /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
 		8E4D289722B919BE00165504 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E4D289922B91BCD00165504 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		8E58205222B99CE10054B45A /* CreateNewMazeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewMazeViewController.swift; sourceTree = "<group>"; };
 		8E72C7A522B070A700CFA087 /* MazeGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E72C7A822B070A700CFA087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E72C7AA22B070A700CFA087 /* MazeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				8E72C7A822B070A700CFA087 /* AppDelegate.swift */,
+				8E58205222B99CE10054B45A /* CreateNewMazeViewController.swift */,
 				8E72C7AA22B070A700CFA087 /* MazeViewController.swift */,
 				8E72C7CA22B0CACD00CFA087 /* MazeGrid.swift */,
 				8E3D8BA022B8FD2A0087BD99 /* Views */,
@@ -345,6 +348,7 @@
 				8E72C7A922B070A700CFA087 /* AppDelegate.swift in Sources */,
 				8E72C7C922B0725600CFA087 /* MazeGenerator.swift in Sources */,
 				8E3D8B9D22B8EFC60087BD99 /* RandomNumberGenerator.swift in Sources */,
+				8E58205322B99CE10054B45A /* CreateNewMazeViewController.swift in Sources */,
 				8E72C7CD22B1B10C00CFA087 /* MazeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

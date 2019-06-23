@@ -22,7 +22,8 @@ enum Direction: Hashable {
 
 class MazeGenerator {
     
-    let rng = RandomNumberGenerator(seedValue: 4567)
+    let seedValue: UInt64
+    let rng: RandomNumberGenerator
     
     //Start Cell
     let initialCell = Cell(row: 1, column: 1)
@@ -41,9 +42,12 @@ class MazeGenerator {
     var cellExitDictionary = [Cell: Set<Direction>]()
     lazy var exitCell = Cell(row: 1, column: 1)
     
-    init(numberOfRows: Int, numberOfColumns: Int) {
+    init(numberOfRows: Int, numberOfColumns: Int, seedValue: UInt64) {
         self.numberOfRows = numberOfRows
         self.numberOfColumns = numberOfColumns
+        self.seedValue = seedValue
+        
+        rng = RandomNumberGenerator(seedValue: seedValue)
     }
     
     func startGeneratingMaze() {
@@ -104,9 +108,7 @@ class MazeGenerator {
     }
     
     func randomCell(from cells: [Cell]) -> Cell {
-        print(cells)
         let random = rng.generateNextValue(lowest: 0, highest: cells.count-1)
-        print(random)
         return cells[random]
     }
     
@@ -164,24 +166,5 @@ class MazeGenerator {
         
         return surroundingCells
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 }

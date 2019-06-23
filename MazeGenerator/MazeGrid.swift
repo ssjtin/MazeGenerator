@@ -10,13 +10,32 @@ import UIKit
 
 class MazeGrid: UIView {
     
+    let mazeId: Int
+    let username: String
+    
+    var playerData: [String: [Int]] = [:] {
+        didSet {
+            renderPlayers()
+        }
+    }
+    
     let cellExitDictionary: [Cell: Set<Direction>]
     var cells = [MazeCell]()
     var currentCell: MazeCell?
     var exitCell = Cell(row: 1, column: 1)
     
-    init(rows: Int, columns: Int, cellExitDictionary: [Cell: Set<Direction>], frame: CGRect) {
-        self.cellExitDictionary = cellExitDictionary
+    init(mazeId: Int, username: String, frame: CGRect) {
+        self.mazeId = mazeId
+        self.username = username
+        
+        let idArray = String(mazeId).compactMap { Int(String($0)) }
+        let rows = idArray[4]*10 + idArray[5]
+        let columns = idArray[6]*10 + idArray[7]
+        
+        let generator = MazeGenerator(numberOfRows: rows, numberOfColumns: columns, seedValue: UInt64(mazeId))
+        generator.startGeneratingMaze()
+        cellExitDictionary = generator.cellExitDictionary
+        
         super.init(frame: frame)
         
         configureGrid(rows, by: columns)
@@ -64,20 +83,40 @@ class MazeGrid: UIView {
         cell?.animateIcon()
     }
     
-    func attemptToMove(_ direction: Direction) {
-        guard let cell = currentCell else { return }
-        guard let possibleDirections = cellExitDictionary[Cell(row: cell.coordinate.0, column: cell.coordinate.1)] else { return }
+    func renderPlayers() {
+        clearCells()
+        for (player, position) in playerData {
+            if player == username {
+                currentCell = cells.first(where: { $0.coordinate == (position[0], position[1]) })
+            }
+            
+            cells.first(where: { $0.coordinate == (position[0], position[1]) })?.animateIcon()
+        }
+    }
+    
+    func clearCells() {
+        for cell in cells {
+            cell.removeIcon()
+        }
+    }
+    
+    func attemptToMove(_ direction: Direction) -> (Int, Int)? {
+        guard let cell = currentCell else { return nil }
+        guard let possibleDirections = cellExitDictionary[Cell(row: cell.coordinate.0, column: cell.coordinate.1)] else { return nil }
         //If move is valid, progress to next cell
         if possibleDirections.contains(direction) {
             let nextMazeCell = nextCell(direction, from: currentCell!)
             currentCell?.removeIcon()
             nextMazeCell.animateIcon()
             currentCell = nextMazeCell
+            return (nextMazeCell.coordinate.0, nextMazeCell.coordinate.1)
         } else if (cell.coordinate.0 == exitCell.row) && (cell.coordinate.1 == exitCell.column) {
             print("you did it booooi")
         } else {
             print("can't go that way")
         }
+        
+        return nil
     }
     
     func nextCell(_ direction: Direction, from currentCell: MazeCell) -> MazeCell {
