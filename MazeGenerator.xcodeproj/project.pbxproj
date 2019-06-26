@@ -83,8 +83,6 @@
 		8E3D8B9E22B8FCE10087BD99 /* Helper Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8E3D8B9C22B8EFC60087BD99 /* RandomNumberGenerator.swift */,
-				8E72C7C822B0725600CFA087 /* MazeGenerator.swift */,
 				8E4D289922B91BCD00165504 /* FirebaseService.swift */,
 			);
 			path = "Helper Classes";
@@ -101,7 +99,6 @@
 		8E3D8BA022B8FD2A0087BD99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8E72C7CC22B1B10C00CFA087 /* MazeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -129,10 +126,10 @@
 		8E72C7A722B070A700CFA087 /* MazeGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				8E7BB75922C219A600851A82 /* MazeCreator */,
 				8E72C7A822B070A700CFA087 /* AppDelegate.swift */,
 				8E58205222B99CE10054B45A /* CreateNewMazeViewController.swift */,
 				8E72C7AA22B070A700CFA087 /* MazeViewController.swift */,
-				8E72C7CA22B0CACD00CFA087 /* MazeGrid.swift */,
 				8E3D8BA022B8FD2A0087BD99 /* Views */,
 				8E3D8B9E22B8FCE10087BD99 /* Helper Classes */,
 				8E3D8B9F22B8FD090087BD99 /* Extensions */,
@@ -151,6 +148,17 @@
 				8E72C7BF22B070A800CFA087 /* Info.plist */,
 			);
 			path = MazeGeneratorTests;
+			sourceTree = "<group>";
+		};
+		8E7BB75922C219A600851A82 /* MazeCreator */ = {
+			isa = PBXGroup;
+			children = (
+				8E72C7C822B0725600CFA087 /* MazeGenerator.swift */,
+				8E72C7CA22B0CACD00CFA087 /* MazeGrid.swift */,
+				8E72C7CC22B1B10C00CFA087 /* MazeCell.swift */,
+				8E3D8B9C22B8EFC60087BD99 /* RandomNumberGenerator.swift */,
+			);
+			path = MazeCreator;
 			sourceTree = "<group>";
 		};
 		C47AF5A7289B9564853DB15D /* Frameworks */ = {

@@ -40,7 +40,7 @@ class MazeGenerator {
     
     //Reference for what each cell looks like/possible paths through cells
     var cellExitDictionary = [Cell: Set<Direction>]()
-    lazy var exitCell = Cell(row: 1, column: 1)
+    var exitCell: Cell!
     
     init(numberOfRows: Int, numberOfColumns: Int, seedValue: UInt64) {
         self.numberOfRows = numberOfRows
@@ -64,8 +64,8 @@ class MazeGenerator {
             updateCellData(fromCell: currentCell, toCell: nextCell)
             if visitedCellsHistory.count == (numberOfRows*numberOfColumns) {
                 //reached exit cell
-                exitCell = currentCell
-                print("maze done son")
+                exitCell = nextCell
+                print("Maze generation completed, with \(visitedCellsHistory.count) cells and exit at row: \(exitCell.row), col: \(exitCell.column)")
             } else {
                 findNextStep()
             }

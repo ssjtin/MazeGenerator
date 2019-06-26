@@ -19,6 +19,7 @@ class RandomNumberGenerator {
         rs.seed = seedValue
     }
     
+    
     func generateNextValue(lowest: Int, highest: Int) -> Int {
         let valueRd = GKRandomDistribution(randomSource: rs, lowestValue: lowest, highestValue: highest)
         let seedRd = GKRandomDistribution(randomSource: rs, lowestValue: 1000, highestValue: 9999)

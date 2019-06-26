@@ -13,50 +13,6 @@ class MazeViewController: UIViewController {
     let mazeId: Int
     let fb = FirebaseService.shared
     
-    let leftButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Left", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.addTarget(self, action: #selector(goLeft), for: .touchUpInside)
-        return button
-    }()
-    
-    let rightButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Right", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.addTarget(self, action: #selector(goRight), for: .touchUpInside)
-        return button
-    }()
-    
-    let upButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Up", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.addTarget(self, action: #selector(goUp), for: .touchUpInside)
-        return button
-    }()
-    
-    let downButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Down", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.addTarget(self, action: #selector(goDown), for: .touchUpInside)
-        return button
-    }()
-    
-    let buttonStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .horizontal
-        sv.distribution = .fillEqually
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
-    }()
-    
     var maze: MazeGrid!
     
     init(mazeId: Int) {
@@ -71,22 +27,9 @@ class MazeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavBar()
-        
         view.backgroundColor = .white
-        
+        configureNavBar()
         renderMaze()
-        
-        //Movement buttons
-        view.addSubview(buttonStackView)
-        buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        buttonStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        buttonStackView.addArrangedSubview(upButton)
-        buttonStackView.addArrangedSubview(downButton)
-        buttonStackView.addArrangedSubview(leftButton)
-        buttonStackView.addArrangedSubview(rightButton)
     }
     
     private func configureNavBar() {
@@ -98,45 +41,35 @@ class MazeViewController: UIViewController {
     }
     
     func renderMaze() {
-
+        
+        //Configure maze frame
         let width = view.frame.width * 0.9
         let originX = view.frame.midX - width/2
         let originY = view.frame.midY - width/2
         let mazeRect = CGRect(x: originX, y: originY, width: width, height: width)
         
+        //Instantiate and setup maze grid
         maze = MazeGrid(mazeId: mazeId, username: fb.username, frame: mazeRect)
+        maze.delegate = self
+        self.view.addSubview(self.maze)
         
         //Create a database listener that updates player position info
-        fb.createListener(mazeId: mazeId) { (data) in
+        self.fb.createListener() { (data) in
             self.maze.playerData = data
-            if data[self.fb.username] == nil {
-                self.fb.updatePosition(mazeId: self.mazeId, position: [1,1], completion: {
-                    self.view.addSubview(self.maze)
-                })
-            }
+        }
+        
+        self.fb.mazeCompletionListener { (winner) in
+            print(winner)
         }
     }
     
-    @objc func goUp() {
-        movePlayer(.Up)
-    }
+}
+
+extension MazeViewController: MazeGridDelegate {
     
-    @objc func goDown() {
-        movePlayer(.Down)
-    }
-    
-    @objc func goLeft() {
-        movePlayer(.Left)
-    }
-    
-    @objc func goRight() {
-        movePlayer(.Right)
-    }
-    
-    func movePlayer(_ direction: Direction) {
-        if let newPosition = maze.attemptToMove(direction) {
-            fb.updatePosition(mazeId: mazeId, position: [newPosition.0, newPosition.1], completion: { })
-            
+    func handleEnteredExitCell() {
+        fb.playerDidFinishMaze { (success) in
+            print(success)
         }
     }
     

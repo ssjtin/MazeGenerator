@@ -12,9 +12,6 @@ class CreateNewMazeViewController: UIViewController {
     
     let fb = FirebaseService.shared
     
-    let columns = 10
-    let rows = 10
-    
     //Initate view objects
     let stackView: UIStackView = {
         let sv = UIStackView()
@@ -30,7 +27,7 @@ class CreateNewMazeViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(createMaze), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showCreateMazePopup), for: .touchUpInside)
         return button
     }()
     
@@ -40,14 +37,8 @@ class CreateNewMazeViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(joinMaze), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showJoinMazePopup), for: .touchUpInside)
         return button
-    }()
-    
-    let identifierInputField: UITextField = {
-        let tf = UITextField()
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        return tf
     }()
     
     //View did load
@@ -69,6 +60,17 @@ class CreateNewMazeViewController: UIViewController {
         }
     }
     
+    private func configureSubviews() {
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(createMazeButton)
+        stackView.addArrangedSubview(joinMazeButton)
+        
+        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 88).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+    }
+    
     private func presentLoginAlert() {
         let alert = UIAlertController(title: "Login", message: "Enter username", preferredStyle: .alert)
         alert.addTextField { (textfield) in
@@ -86,39 +88,96 @@ class CreateNewMazeViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func configureSubviews() {
+    @objc func showCreateMazePopup() {
+        let alert = UIAlertController(title: "New Maze", message: "", preferredStyle: .alert)
         
-        view.addSubview(stackView)
-        stackView.addArrangedSubview(createMazeButton)
-        stackView.addArrangedSubview(joinMazeButton)
-        stackView.addArrangedSubview(identifierInputField)
+        alert.addTextField { (textField) in
+            textField.tag = 1
+            textField.placeholder = "Number of rows"
+            textField.keyboardType = .numberPad
+        }
         
-        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 88).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        alert.addTextField { (textField) in
+            textField.tag = 2
+            textField.placeholder = "Number of columns"
+            textField.keyboardType = .numberPad
+        }
+        
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            guard   let rowString = alert.textFields?.first(where: { $0.tag == 1 })?.text,
+                    let colString = alert.textFields?.first(where: { $0.tag == 2 })?.text,
+                    let row = Int(rowString),
+                    let col = Int(colString)
+                else { return }
+            
+            self.createMaze(with: row,cols: col)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
-    @objc func createMaze() {
+    func createMaze(with rows: Int, cols: Int) {
         //create random number
         let rnd = Int.random(in: 1000...9999)
-        let mazeId = rnd*10000 + rows*100 + columns
-        UserDefaults.standard.set(mazeId, forKey: "id")
-        fb.createMaze(id: mazeId, size: (row: 12, col: 12)) {
-            
+        let mazeId = rnd*10000 + rows*100 + cols
+        fb.mazeId = mazeId
+        fb.createMaze {
+            self.presentMazeController(id: mazeId)
         }
-        let mazeVC = MazeViewController(mazeId: mazeId)
-        navigationController?.pushViewController(mazeVC, animated: true)
-    
     }
     
-    @objc func joinMaze() {
-        guard let mazeIdString = identifierInputField.text, let mazeId = Int(mazeIdString) else { return }
-        fb.checkMazeExists(id: mazeId) { (exists) in
+    @objc func showJoinMazePopup() {
+        let alert = UIAlertController(title: "Join Maze", message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter maze ID"
+            textField.keyboardType = .numberPad
+        }
+        
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            guard   let rowString = alert.textFields?[0].text,
+                    let mazeID = Int(rowString)
+                else { return }
+            
+            self.joinMaze(id: mazeID)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func joinMaze(id: Int) {
+        fb.checkMazeExists(id: id) { (exists) in
             if exists {
-                self.presentMazeController(id: mazeId)
+                self.fb.mazeId = id
+                self.presentMazeController(id: id)
+            } else {
+                self.showInvalidIdAlert()
             }
         }
+    }
+    
+    func showInvalidIdAlert() {
+        let alert = UIAlertController(title: "Maze ID doesn't exist", message: "Please check and try again", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     func presentMazeController(id: Int) {
